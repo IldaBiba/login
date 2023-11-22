@@ -39,6 +39,10 @@ function LogIn() {
       .then((response) => {
         console.log(response);
         dispatch(getLogIn({ response }));
+        // dispatch({
+        //   type: "LOGIN_LOGIN",
+        //   payload: response,
+        // });
         localStorage.setItem("session", response.data.result.login.session);
         const datajson = JSON.stringify(response);
         setData(datajson);
