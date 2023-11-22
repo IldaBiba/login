@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 import "./LogIn.css";
-import getLogIn from "./Login.actions";
+import getLogIn from "../../Redux/Login.actions";
 import { useDispatch } from "react-redux";
 
 function LogIn() {
