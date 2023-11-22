@@ -1,0 +1,32 @@
+.row_login {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.col_login {
+  display: flex;
+  flex-direction: column;
+}
+
+.form h1 {
+  font-weight: 800;
+}
+.form label {
+  font-size: 25px;
+  margin: 10px;
+}
+.form input {
+  margin: 10px;
+}
+
+.bbtn {
+  border: none;
+  margin: 25px auto;
+  background-color: darkgray;
+  padding: 10px;
+  font-size: 15px;
+  color: white;
+  border-radius: 35px;
+}
