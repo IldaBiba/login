@@ -13,6 +13,8 @@ export const logIn = (
       return { ...state, data: payload, isUser: true };
     case actionTypes.LOGIN_LOGOUT:
       return { ...state, isUser: false };
+    case actionTypes.LOGIN_ERROR:
+      return { ...state, error: payload };
     default:
       return state;
   }

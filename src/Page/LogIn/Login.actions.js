@@ -1,6 +1,7 @@
 export const actionTypes = {
   LOGIN_LOGIN: "LOGIN_LOGIN",
   LOGIN_LOGOUT: "LOGIN_LOGOUT",
+  LOGIN_ERROR: "LOGIN_ERROR",
 };
 
 const getLogIn = ({ response }) => {
@@ -11,6 +12,10 @@ const getLogIn = ({ response }) => {
     });
     dispatch({
       type: actionTypes.LOGIN_LOGOUT,
+    });
+    dispatch({
+      type: actionTypes.LOGIN_ERROR,
+      paylod: response,
     });
   };
 };
