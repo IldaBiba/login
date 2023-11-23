@@ -11,9 +11,9 @@ import { useDispatch } from "react-redux";
 function LogIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [data, setData] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const token = localStorage.getItem("session");
   console.log(token);
 
@@ -26,7 +26,7 @@ function LogIn() {
     setUsername(event.target.value);
     console.log(username);
   }
-  //   useEffect(() => {
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const userData = {
@@ -37,15 +37,16 @@ function LogIn() {
     axios
       .post("https://anem-topia.bspvision.com/modules/Mobile/api.php", userData)
       .then((response) => {
-        console.log(response);
+        console.log(response.data.success);
         dispatch(getLogIn({ response }));
         // dispatch({
         //   type: "LOGIN_LOGIN",
         //   payload: response,
         // });
+        console.log(response);
+        console.log(response.data.result.login.session);
         localStorage.setItem("session", response.data.result.login.session);
-        const datajson = JSON.stringify(response);
-        setData(datajson);
+
         navigate("/");
       })
       .catch((error) => {
@@ -86,7 +87,6 @@ function LogIn() {
                 Log In
               </Button>
             </form>
-            {data && <p>{data}</p>}
           </Col>
         </Row>
       </Container>

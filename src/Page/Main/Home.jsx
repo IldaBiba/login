@@ -3,10 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 function Home() {
-  const token = localStorage.getItem("session");
-  console.log(token);
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   function handleClick() {
@@ -14,24 +11,14 @@ function Home() {
     dispatch({
       type: "LOGIN_LOGOUT",
     });
-    navigate("/");
+    navigate("/log-in");
   }
 
   return (
     <div>
       <div>This is the main page.</div>
       <div>
-        {token ? (
-          <Button onClick={handleClick}>Log Out</Button>
-        ) : (
-          <Button
-            onClick={() => {
-              navigate("/log-in");
-            }}
-          >
-            Log In
-          </Button>
-        )}
+        <Button onClick={handleClick}>Log Out</Button>
       </div>
     </div>
   );
