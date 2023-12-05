@@ -1,16 +1,17 @@
 import "./App.css";
-import LogIn from "./Page/LogIn/LogIn";
-import Home from "./Page/Main/Home";
+import LogIn from "./Pages/LogIn/LogIn";
+import Home from "./Pages/Main/Home";
+import AddProperty from "./Pages/AddProperty/AddProperty";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoutes from "./ProtectedRoutes";
 
 function App() {
-  const token = localStorage.getItem("session");
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<ProtectedRoutes token={token} />}>
+        <Route element={<ProtectedRoutes />}>
           <Route path="/" element={<Home />} />
+          <Route path="/add-property" element={<AddProperty />} />
         </Route>
         <Route path="/log-in" element={<LogIn />} />
         {/* <Route

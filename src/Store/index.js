@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { logIn } from "../Page/LogIn/Login.reducers";
+import { logIn } from "../Pages/LogIn/Login.reducers";
+import { modules } from "../Modules/Modules.reducers";
 
 const store = configureStore({
-  reducer: { logIn },
+  reducer: { logIn, modules },
 });
 
 export default store;

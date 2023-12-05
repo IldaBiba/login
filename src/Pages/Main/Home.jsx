@@ -1,17 +1,25 @@
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { logIn } from "../LogIn/Login.reducers";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 function Home() {
+  const logInState = useSelector((state) => state.logIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   function handleClick() {
     localStorage.removeItem("session");
+    console.log(logInState);
     dispatch({
-      type: "LOGIN_LOGOUT",
+      type: "LOGOUT_SUCCESS",
     });
+    console.log(logInState);
     navigate("/log-in");
+  }
+  function handleClickAdd() {
+    navigate("/add-property");
   }
 
   return (
@@ -19,6 +27,7 @@ function Home() {
       <div>This is the main page.</div>
       <div>
         <Button onClick={handleClick}>Log Out</Button>
+        <Button onClick={handleClickAdd}>Add Property</Button>
       </div>
     </div>
   );
