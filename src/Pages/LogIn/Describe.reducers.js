@@ -1,6 +1,6 @@
-import { actionTypes } from "./Module.actions";
+import { actionTypes } from "./Describe.actions";
 
-export const modules = (
+export const describe = (
   state = {
     describe: "",
     error: null,

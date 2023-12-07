@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Dropdown } from "primereact/dropdown";
 import "primereact/resources/themes/saga-blue/theme.css"; // Choose a theme
 import "primereact/resources/primereact.min.css";
 import "./Dropdown.css";
 
-const DropdownComponent = ({ options }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+const DropdownComponent = ({ options, onChange, name }) => {
+  const [value, setValue] = useState("");
 
+  useEffect(() => {
+    onChange(name, value);
+  }, [value]);
   const onDropdownChange = (e) => {
-    setSelectedOption(e.value);
+    setValue(e.value);
   };
 
   return (
     <Dropdown
-      value={selectedOption}
+      value={value}
       options={options}
       onChange={onDropdownChange}
       placeholder="Select an option"

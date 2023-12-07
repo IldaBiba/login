@@ -1,8 +1,9 @@
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { logIn } from "../LogIn/Login.reducers";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import Input from "../../Components/Input/Input";
+import NavBar from "../../Components/NavBarBottom/NavBar";
 
 function Home() {
   const logInState = useSelector((state) => state.logIn);

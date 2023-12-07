@@ -3,7 +3,7 @@ export const actionTypes = {
   DESCRIBE_ERROR: "DESCRIBE_ERROR",
 };
 
-export const getModules = (res) => {
+export const getDescribe = (res) => {
   return (dispatch) => {
     dispatch({
       type: actionTypes.DESCRIBE_SUCCESS,

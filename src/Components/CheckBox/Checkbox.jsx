@@ -1,32 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Checkbox.css";
-import { Checkbox } from "primereact/checkbox"; // Add your custom styles here
+import { Checkbox } from "primereact/checkbox";
 
-const CheckboxComponent = () => {
-  const [checked, setChecked] = useState(false);
-  const checkboxRef = useRef(null);
+const CheckboxComponent = ({ onChange, name }) => {
+  const [value, setValue] = useState(false);
+  useEffect(() => {
+    onChange(name, value);
+  }, [value]);
 
-  // useEffect(() => {
-  //   const handleClickOutside = (event) => {
-  //     if (checkboxRef.current && !checkboxRef.current.contains(event.target)) {
-  //       // Uncomment the line below if you want to uncheck the checkbox when clicking outside
-  //       // setIsChecked(false);
-  //     }
-  //   };
-
-  //   document.addEventListener("click", handleClickOutside);
-
-  //   return () => {
-  //     document.removeEventListener("click", handleClickOutside);
-  //   };
-  // }, [checkboxRef]);
+  const handleChecked = (e) => {
+    setValue(e.checked);
+  };
 
   return (
     <div className="custom-checkbox">
-      <Checkbox
-        onChange={(e) => setChecked(e.checked)}
-        checked={checked}
-      ></Checkbox>
+      <Checkbox onChange={handleChecked} checked={value}></Checkbox>
     </div>
   );
 };

@@ -20,66 +20,9 @@ th {
   font-weight: 350;
   color: #333;
 }
-
-.input {
-  width: 50%;
-  display: flex;
+.costum_toast {
+  border: 1px solid #d9534f; /* Border color */
 }
-.inputnameValue {
-  width: 50%;
-}
-
-.inputname {
-  margin-left: 20px;
-}
-.input-with-symbol:hover {
-  border-bottom: 2px solid #6cc1db !important;
-}
-
-.costum-select {
-  width: 100%;
-  padding: 5px;
-  color: #adadad;
-  box-sizing: border-box;
-  border: none;
-  border-bottom: 2px solid #adadad !important;
-}
-
-.costum-select:focus,
-.costum-select:active,
-.costum-select:hover {
-  outline: none;
-  border-bottom: 2px solid #6cc1db !important;
-}
-
-.costum-input {
-  border: none;
-  border-bottom: 2px solid #adadad;
-  width: 97%;
-  padding: 5px;
-}
-.costum-input:focus,
-.costum-input:active,
-.costum-input:hover {
-  outline: none;
-  border-bottom: 2px solid #6cc1db;
-}
-.costum-input-euro {
-  border: none;
-  width: 97%;
-  padding: 5px;
-}
-
-.input-with-symbol {
-  display: flex;
-  align-items: center;
-  border-bottom: 2px solid #adadad;
-}
-
-.currency-symbol {
-  padding: 1px;
-}
-
 .flex-container {
   display: flex;
   flex-wrap: wrap;
@@ -87,12 +30,6 @@ th {
   align-items: flex-start; /* Adjust as needed */
 }
 
-.flex-item {
-  flex-basis: calc(50% - 10px); /* Adjust for gutter/margin */
-  margin-bottom: 20px; /* Adjust as needed */
-  border: none;
-  padding: 20px;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
+.width {
+  width: 50%;
 }

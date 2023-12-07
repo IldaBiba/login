@@ -2,13 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./LogIn.css";
-import { getModules } from "../../Modules/Module.actions";
 import { useDispatch, useSelector } from "react-redux";
 import { logIn } from "./Login.reducers";
 
 const useLogin = () => {
   const logInState = useSelector((state) => state.logIn);
-  const moduleState = useSelector((state) => state.modules);
+  const describeState = useSelector((state) => state.modules);
   console.log(logInState);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -28,7 +27,7 @@ const useLogin = () => {
     setUsername(value);
     console.log(username);
   };
-  console.log("module", moduleState);
+  console.log("module", describeState);
 
   const login = async (e) => {
     if (!token) {
