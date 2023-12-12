@@ -1,0 +1,5 @@
+.container-allproperties {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Creates 4 equal columns */
+  gap: 16px; /* Adjust the gap as needed */
+}

@@ -24,8 +24,14 @@ const Input = ({ item, onChange }) => {
             onChange={handleInputChange}
           />
         ) : item.type.name === "boolean" ? (
-          <CheckboxComponent name={item.label} onChange={handleInputChange} />
+          <CheckboxComponent name={item.name} onChange={handleInputChange} />
         ) : item.type.name === "multipicklist" ? (
+          <DropdownComponent
+            options={item.type.picklistValues}
+            name={item.name}
+            onChange={handleInputChange}
+          />
+        ) : item.type.name === "owner" ? (
           <DropdownComponent
             options={item.type.picklistValues}
             name={item.name}

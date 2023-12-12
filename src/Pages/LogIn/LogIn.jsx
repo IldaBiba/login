@@ -11,7 +11,7 @@ function LogIn() {
   const { setPasswordValue, setUsernameValue, login, error } = useLogin();
 
   if (token) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/all-properties/1" replace />;
   } else {
     return (
       <Container>
@@ -24,12 +24,12 @@ function LogIn() {
                 placeholder="Type your username here"
                 name="username"
                 type="text"
-                onChange={(e) => setPasswordValue(e.target.value)}
+                onChange={(e) => setUsernameValue(e.target.value)}
               ></input>
               <label>Password:</label>
               <input
                 type="password"
-                onChange={(e) => setUsernameValue(e.target.value)}
+                onChange={(e) => setPasswordValue(e.target.value)}
                 name="password"
               ></input>
               <Button type="submit" className="bbtn">

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import Input from "../../Components/Input/Input";
 import NavBar from "../../Components/NavBarBottom/NavBar";
+import AllProperties from "../../Components/AllProperties/AllProperties";
 
 function Home() {
   const logInState = useSelector((state) => state.logIn);
@@ -29,6 +30,7 @@ function Home() {
       <div>
         <Button onClick={handleClick}>Log Out</Button>
         <Button onClick={handleClickAdd}>Add Property</Button>
+        <AllProperties />
       </div>
     </div>
   );

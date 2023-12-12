@@ -10,8 +10,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<ProtectedRoutes />}>
-          <Route path="/" element={<Home />} />
+          <Route path="/all-properties/:page_number" element={<Home />} />
           <Route path="/add-property" element={<AddProperty />} />
+          <Route path="/edit/:id" element={<AddProperty />} />
         </Route>
         <Route path="/log-in" element={<LogIn />} />
         {/* <Route

@@ -43,6 +43,7 @@ const useLogin = () => {
           "https://anem-topia.bspvision.com/modules/Mobile/api.php",
           userData
         );
+        console.log(response);
         if (response.data.success) {
           dispatch({
             type: "LOGIN_SUCCESS",
@@ -61,16 +62,16 @@ const useLogin = () => {
               describeData
             )
             .then((response) => {
-              console.log(response);
-              console.log(logInState);
+              //console.log(response);
+              //console.log(logInState);
               dispatch(
                 dispatch({
                   type: "DESCRIBE_SUCCESS",
                   payload: response,
                 })
               );
-              console.log(logInState);
-              navigate("/");
+              //console.log(logInState);
+              navigate("/all-properties/1");
             })
             .catch((error) => {
               console.log(error);
