@@ -3,7 +3,7 @@ import { Card } from "primereact/card";
 
 const CardComponent = ({ property, onChange }) => {
   const handleClick = () => {
-    onChange(property.id);
+    onChange(property.id, property);
   };
   return (
     <Card

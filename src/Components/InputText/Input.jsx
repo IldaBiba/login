@@ -4,13 +4,13 @@ import { useState } from "react";
 import "./Input.css";
 import { useEffect } from "react";
 
-const TextInput = ({ onChange, name }) => {
-  const [value, setValue] = useState("");
+const TextInput = ({ onChange, name, initialValue }) => {
+  const [value, setTextValue] = useState(initialValue);
   useEffect(() => {
     onChange(name, value);
   }, [value]);
   const handleInput = (e) => {
-    setValue(e.target.value);
+    setTextValue(e.target.value);
   };
 
   return (

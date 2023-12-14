@@ -2,19 +2,25 @@ import React, { useState, useEffect, useRef } from "react";
 import "./Checkbox.css";
 import { Checkbox } from "primereact/checkbox";
 
-const CheckboxComponent = ({ onChange, name }) => {
-  const [value, setValue] = useState(false);
+const CheckboxComponent = ({ onChange, name, initialValue }) => {
+  const [checkboxValue, setCheckboxValue] = useState(
+    initialValue === "1" ? true : false
+  );
   useEffect(() => {
-    onChange(name, value);
-  }, [value]);
+    onChange(name, checkboxValue);
+  }, [checkboxValue]);
 
   const handleChecked = (e) => {
-    setValue(e.checked);
+    setCheckboxValue(e.checked);
   };
 
   return (
     <div className="custom-checkbox">
-      <Checkbox onChange={handleChecked} checked={value}></Checkbox>
+      <Checkbox
+        onChange={handleChecked}
+        // checked={checkboxValue === "1" ? true : false}
+        checked={checkboxValue}
+      ></Checkbox>
     </div>
   );
 };

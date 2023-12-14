@@ -1,42 +1,72 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 const useAddPropety = () => {
   const info = useSelector((state) => state.describe);
   const option = info.describe.data.result.describe.fields;
+  const { state } = useLocation();
+  const initialValue = state?.initialValue ?? {};
   const session = localStorage.getItem("session");
-  const [itemData, setItemData] = useState({});
+  const [propertyData, setPropertyData] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let { id } = useParams();
 
+  // useEffect(() => {
+  //   setPropertyData(initialValue);
+  // }, []);
+  const required_option = option.filter((item) => item.mandatory == true);
+  console.log(initialValue);
+  const defaultChange = () => {
+    if (Object.keys(initialValue).length > 0) {
+      option.map((item, key) => {
+        const propertiesname = Object.keys(initialValue);
+
+        if (propertiesname.length > 0) {
+          const matchingProperty = propertiesname.find(
+            (property) => item.name === property
+          );
+
+          if (matchingProperty) {
+            const value = initialValue[matchingProperty];
+            item["default"] = value;
+          }
+        }
+      });
+      return option;
+    } else {
+      option.map((item) => {
+        item.default = "";
+      });
+      console.log("no value default");
+      return option;
+    }
+  };
+
   const handleItemChange = (name, value) => {
-    // setItemData({ ...itemData, [name]: value });
     if (value !== "") {
-      setItemData((prev) => ({
+      setPropertyData((prev) => ({
         ...prev,
         [name]: value,
       }));
     }
   };
-  console.log(id, "id e nje property");
-  console.log(itemData);
-  const required_option = option.filter((item) => item.mandatory == true);
 
   const handleCancelButton = () => {
     console.log("Cancel");
   };
+
   let isAlert = true;
   const handleSaveButton = async () => {
     required_option.map((item) => {
-      for (const property in itemData) {
+      for (const property in propertyData) {
         if (item.name == property) {
-          const value = itemData[property];
+          const value = propertyData[property];
 
           console.log(item.name, property, value, "value");
           if (value !== "") {
@@ -65,7 +95,7 @@ const useAddPropety = () => {
         _operation: "saveRecord",
         _session: session,
         module: "Properties",
-        values: itemData,
+        values: propertyData,
       };
       if (id) {
         property = {
@@ -73,7 +103,7 @@ const useAddPropety = () => {
           _session: session,
           module: "Properties",
           record: id,
-          values: itemData,
+          values: propertyData,
         };
       }
       console.log(property);
@@ -104,8 +134,13 @@ const useAddPropety = () => {
       }
     }
     console.log(required_option);
-    console.log(itemData);
+    console.log(propertyData);
   };
-  return { handleSaveButton, handleCancelButton, handleItemChange };
+  return {
+    handleSaveButton,
+    handleCancelButton,
+    handleItemChange,
+    defaultChange,
+  };
 };
 export default useAddPropety;

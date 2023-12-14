@@ -16,8 +16,8 @@ function AllProperties() {
     fetchData();
   }, []);
 
-  const handleCardClick = (id) => {
-    navigate(`/edit/${id}`);
+  const handleCardClick = (id, property) => {
+    navigate(`/edit/${id}`, { state: { initialValue: property } });
   };
 
   return (
